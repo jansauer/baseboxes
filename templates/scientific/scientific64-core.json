@@ -1,0 +1,57 @@
+{
+  "variables": {
+    "version": ""
+  },
+  "builders": [
+    {
+      "vm_name": "scientific64-core",
+      "type": "virtualbox-iso",
+      "guest_os_type": "RedHat_64",
+      "iso_urls": [
+        "http://ftp.tu-chemnitz.de/pub/linux/scientific/6.4/x86_64/iso/SL-64-x86_64-2013-03-18-boot.iso",
+        "http://ftp.scientificlinux.org/linux/scientific/6.4/x86_64/iso/SL-64-x86_64-2013-03-18-boot.iso"
+      ],
+      "iso_checksum": "f0ccbd8cb802b489ab6a606c90f05f5d249db1cb1e0e931dbb703240b4d97d8c",
+      "iso_checksum_type": "sha256",
+      "http_directory": "http",
+      "headless": true,
+      "boot_wait": "15s",
+      "boot_command": [
+        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/scientific64-core.cfg<enter>"
+      ],
+      "hard_drive_interface": "sata",
+      "disk_size": 60000,
+      "vboxmanage": [
+        ["modifyvm", "{{.Name}}", "--memory", "512"],
+        ["modifyvm", "{{.Name}}", "--cpus", "1"]
+      ],
+      "ssh_username": "root",
+      "ssh_password": "vagrant",
+      "ssh_wait_timeout": "10000s",
+      "virtualbox_version_file": "/etc/vbox_version",
+      "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
+      "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now",
+      "output_directory": "../../packer_output/scientific64-core_virtualbox-iso"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "execute_command": "echo 'vagrant' | sudo -E -S bash '{{.Path}}'",
+      "scripts": [
+        "scripts/vagrant.sh",
+        "scripts/vmtools.sh",
+        "scripts/logging.sh",
+        "scripts/cleanup.sh"
+      ]
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "vagrant",
+      "output": "../../output/scientific64-core_{{.Provider}}_{{user `version`}}.box",
+      "compression_level": 9,
+      "keep_input_artifact": false
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "variables": {
+    "version": ""
+  },
+  "builders": [
+    {
+      "vm_name": "centos7-core",
+      "type": "virtualbox-iso",
+      "guest_os_type": "RedHat_64",
+      "iso_urls": [
+        "http://mirror.netcologne.de/centos/7/isos/x86_64/CentOS-7.0-1406-x86_64-NetInstall.iso",
+        "http://ftp.tu-chemnitz.de/pub/linux/centos/7/isos/x86_64/CentOS-7.0-1406-x86_64-NetInstall.iso"
+      ],
+      "iso_checksum": "df6dfdd25ebf443ca3375188d0b4b7f92f4153dc910b17bccc886bd54a7b7c86",
+      "iso_checksum_type": "sha256",
+      "http_directory": "http",
+      "headless": true,
+      "boot_wait": "15s",
+      "boot_command": [
+        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/centos7-core.cfg<enter>"
+      ],
+      "hard_drive_interface": "sata",
+      "disk_size": 60000,
+      "vboxmanage": [
+        ["modifyvm", "{{.Name}}", "--memory", "512"],
+        ["modifyvm", "{{.Name}}", "--cpus", "1"]
+      ],
+      "ssh_username": "root",
+      "ssh_password": "vagrant",
+      "ssh_wait_timeout": "10000s",
+      "virtualbox_version_file": "/etc/vbox_version",
+      "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
+      "shutdown_command": "echo 'vagrant' | sudo -S shutdown -h now",
+      "output_directory": "../../packer_output/centos7-core_virtualbox-iso"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "execute_command": "echo 'vagrant' | sudo -E -S bash '{{.Path}}'",
+      "scripts": [
+        "scripts/vagrant.sh",
+        "scripts/vmtools.sh",
+        "scripts/logging.sh",
+        "scripts/cleanup.sh"
+      ]
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "vagrant",
+      "output": "../../output/centos7-core_{{.Provider}}_{{user `version`}}.box",
+      "compression_level": 9,
+      "keep_input_artifact": false
+    }
+  ]
+}

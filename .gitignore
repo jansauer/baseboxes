@@ -1,0 +1,12 @@
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Packer
+output/
+packer_cache/
+packer_output/
+
+# Test
+test/.vagrant
+test/Berksfile.lock
