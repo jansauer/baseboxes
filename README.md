@@ -27,10 +27,10 @@ Pull requests are always welcome. I'm grateful for any help or inspiration.
 
 Author: Jan Sauer
 <[jan@jansauer.de](mailto:jan@jansauer.de)>
-([http://jansauer.de](http://jansauer.de))
+([https://jansauer.de](https://jansauer.de))
 
 ```text
-Copyright 2013-2014, Jan Sauer <jan@jansauer.de> (http://jansauer.de)
+Copyright 2013-2014, Jan Sauer <jan@jansauer.de> (https://jansauer.de)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
