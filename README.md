@@ -13,6 +13,7 @@ found [here](http://docs-v1.vagrantup.com/v1/docs/base_boxes.html).
 ## Quick start
 
 ```bash
+brew install https://github.com/homebrew/homebrew-binary/blob/master/packer.rb
 make list
 make <name>.box version=<version>
 ```
