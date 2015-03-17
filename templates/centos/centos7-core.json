@@ -39,7 +39,6 @@
       "type": "shell",
       "execute_command": "echo 'vagrant' | sudo -E -S bash '{{.Path}}'",
       "scripts": [
-        "scripts/prepare.sh",
         "scripts/vagrant.sh",
         "scripts/vmtools.sh",
         "scripts/logging.sh",

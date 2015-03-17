@@ -9,11 +9,7 @@ VBOX_VERSION=$(cat /etc/vbox_version)
 mount -o loop,ro /root/VBoxGuestAdditions_$VBOX_VERSION.iso /mnt
 
 # run the installer
-# need to ignorre exit code since it always fails.
-# virtualbox: Installing the Window System drivers       [FEHLGESCHLAGEN]
-# virtualbox: (Could not find the X.Org or XFree86 Window System.)
 sh /mnt/VBoxLinuxAdditions.run --nox11
-# || true
 
 # unmount guest additions
 umount /mnt
