@@ -6,6 +6,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # !!!
   # basebox
   # !!!
+  #config.vm.box = "jansauer/fedora21-core"
   #config.vm.box = "jansauer/fedora20-core"
   #config.vm.box = "jansauer/centos7-core"
   #config.vm.box = "jansauer/scientific7-core"
