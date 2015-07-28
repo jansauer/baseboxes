@@ -1,34 +1,10 @@
-
 VAGRANTFILE_API_VERSION = "2"
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # All Vagrant configuration is done here.
 
   # !!!
-  # basebox
+  # CHOOSE BASEBOX
   # !!!
-  #config.vm.box = "jansauer/fedora21-core"
-  #config.vm.box = "jansauer/fedora20-core"
-  #config.vm.box = "jansauer/centos7-core"
-  #config.vm.box = "jansauer/scientific7-core"
-  #config.vm.box = "jansauer/scientific65-core"
-  #config.vm.box = "jansauer/scientific64-core"
 
-
-  # check for basebox updates
-  config.vm.box_check_update = true
-
-  # private network
-  config.vm.network :private_network, ip: "33.33.33.19"
-
-  # enable Berkshelf plugin
-  config.berkshelf.enabled = true
-
-  # chef version
-  config.omnibus.chef_version = :latest
-
-  # chef setup
-  config.vm.provision "chef_solo" do |chef|
-    chef.add_recipe "hello_world"
-  end
 
 end
