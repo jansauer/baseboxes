@@ -14,4 +14,4 @@ rpm -qa kernel
 rpm -qa --qf "%{NAME}-%{VERSION}-%{RELEASE}.%{ARCH}\n"
 
 # package count
-yum list installed | wc -l
+dnf list installed | wc -l

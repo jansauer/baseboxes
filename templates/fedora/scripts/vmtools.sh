@@ -2,7 +2,7 @@
 echo "Installing VirtualBox guest additions"
 
 # install dependencies
-yum install -y tar bzip2 perl gcc kernel-headers kernel-devel
+dnf install -y tar bzip2 perl gcc kernel-headers kernel-devel
 
 # mount guest additions
 VBOX_VERSION=$(cat /etc/vbox_version)
@@ -19,7 +19,7 @@ umount /mnt
 rm -rf /root/VBoxGuestAdditions_$VBOX_VERSION.iso
 
 # remove dependencies
-yum erase -y tar bzip2 perl gcc kernel-headers kernel-devel binutils cpp libmpc mpfr
+dnf erase -y tar bzip2 perl gcc kernel-headers kernel-devel binutils cpp libmpc mpfr
 
 # remove logs
 rm -f /var/log/vboxadd-install.log

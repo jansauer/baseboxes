@@ -6,5 +6,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # CHOOSE BASEBOX
   # !!!
 
+  config.vm.box = "jansauer/fedora22-core"
 
 end

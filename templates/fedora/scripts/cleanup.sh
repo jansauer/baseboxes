@@ -2,7 +2,7 @@
 echo "Cleanup the system"
 
 # delete yum caches
-yum -y clean all
+dnf -y clean all
 
 # delete temporary files
 rm -rf /tmp/*
@@ -10,6 +10,9 @@ rm -rf /var/tmp/*
 
 # clean logs
 echo -n | tee /var/log/yum.log
+
+# clean network settings
+rm -rf /etc/udev/rules.d/70-persistent-net.rules
 
 # zero out the free space to save space in the final image
 dd if=/dev/zero of=/EMPTY bs=1M | true
