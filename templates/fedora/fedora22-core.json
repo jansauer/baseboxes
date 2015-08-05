@@ -42,6 +42,7 @@
       "scripts": [
         "scripts/vagrant.sh",
         "scripts/vmtools.sh",
+        "scripts/ansible.sh",
         "scripts/logging.sh",
         "scripts/cleanup.sh"
       ]
